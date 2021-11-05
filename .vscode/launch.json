@@ -5,9 +5,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "chrome",
+      "name": "GO Server",
+      "type": "go",
       "request": "launch",
-      "name": "Next: Chrome",
+      "mode": "debug",
+      "program": "${workspaceFolder}/backend/main.go",
+      "cwd": "${workspaceFolder}/backend",
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Chrome",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
     },
@@ -15,17 +23,18 @@
       "type": "node",
       "request": "launch",
       "name": "Next: Node",
-      "program": "${workspaceFolder}/node_modules/.bin/next",
+      "program": "${workspaceFolder}/frontend/node_modules/.bin/next",
       "args": ["dev"],
       "autoAttachChildProcesses": true,
       "skipFiles": ["<node_internals>/**"],
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/frontend"
     }
   ],
   "compounds": [
     {
-      "name": "Next: Full",
-      "configurations": ["Next: Node", "Next: Chrome"]
+      "name": "Full App",
+      "configurations": ["Next: Node", "Chrome", "GO Server"]
     }
   ]
 }
